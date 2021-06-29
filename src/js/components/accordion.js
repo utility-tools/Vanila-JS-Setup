@@ -3,44 +3,45 @@
  * @desc Accordion component class
  */
 export default class Accordion {
-    CompElm = null;
-    Items = null;
-    Triggers = null;
-    MultipleEnabled = false;
-    ActiveClass = 'accordion__item--active';
+    compElm = null;
+    items = null;
+    triggers = null;
+    isMultipleEnabled = false;
+    activeClass = 'accordion__item--active';
 
     /**
      * @constructor
-     * @param {Node} El 
+     * @param { Node } El 
      */
     constructor(El) {
         if(!El) {
             return;
         }
-        
-        this.CompElm = El;
-        this.Items = El.querySelectorAll('.accordion__item');
-        this.MultipleEnabled = El.dataset.multiple;
-        this.ActiveClass = El.dataset.activeClass || this.ActiveClass;
+
+        this.compElm = El;
+        this.items = El.querySelectorAll('.accordion__item');
+        this.isMultipleEnabled = El.dataset.multiple;
+        this.activeClass = El.dataset.activeClass || this.activeClass;
+        this.triggers = El.querySelectorAll('.accordion__item-title');
 
         // Bind Events
-        this.Items.forEach(item => item.querySelector('.accordion__item-title').addEventListener('click', this.toggleItem));
+        this.triggers.forEach(trigger => trigger.addEventListener('click', this.toggleItem));
     }
 
     /**
      * @method
      * @desc toggle Accordion Item when clicked
-     * @param {Event} event 
+     * @param { Event } event 
      */
     toggleItem = (event) => {
         event.stopPropagation();
         const accItem = event.target.parentNode;
 
         // toggle current item
-        accItem.classList.toggle(this.ActiveClass);
+        accItem.classList.toggle(this.activeClass);
 
         // hide others
-        if(!this.MultipleEnabled) {
+        if(!this.isMultipleEnabled) {
             this.hideSiblings(accItem);
         }
     }
@@ -48,12 +49,12 @@ export default class Accordion {
     /**
      * @method
      * @desc hides other accordion-items
-     * @param {*} currentItem 
+     * @param { Node } currentItem 
      */
     hideSiblings(currentItem) {
         Array.from(currentItem.parentElement.children).filter(el => {
             if(el.classList.contains('accordion__item') && el !== currentItem) {
-                el.classList.remove(this.ActiveClass);
+                el.classList.remove(this.activeClass);
             }
         });
     }

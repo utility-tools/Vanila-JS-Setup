@@ -1,4 +1,3 @@
-import { expect } from '@jest/globals';
 import Accordion from './accordion.js';
 
 test('Accordion', () => {
