@@ -14,6 +14,10 @@ export default class Accordion {
      * @param {Node} El 
      */
     constructor(El) {
+        if(!El) {
+            return;
+        }
+        
         this.CompElm = El;
         this.Items = El.querySelectorAll('.accordion__item');
         this.MultipleEnabled = El.dataset.multiple;
