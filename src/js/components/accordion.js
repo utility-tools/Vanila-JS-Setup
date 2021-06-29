@@ -9,6 +9,10 @@ export default class Accordion {
     MultipleEnabled = false;
     ActiveClass = 'accordion__item--active';
 
+    /**
+     * @constructor
+     * @param {Node} El 
+     */
     constructor(El) {
         this.CompElm = El;
         this.Items = El.querySelectorAll('.accordion__item');
@@ -37,6 +41,11 @@ export default class Accordion {
         }
     }
 
+    /**
+     * @method
+     * @desc hides other accordion-items
+     * @param {*} currentItem 
+     */
     hideSiblings(currentItem) {
         Array.from(currentItem.parentElement.children).filter(el => {
             if(el.classList.contains('accordion__item') && el !== currentItem) {

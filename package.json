@@ -1,0 +1,25 @@
+{
+  "name": "vanila-js-setup",
+  "version": "1.0.0",
+  "description": "Basic project setup quick start for vanila JS setup",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utility-tools/vanila-js-setup.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/utility-tools/vanila-js-setup/issues"
+  },
+  "homepage": "https://github.com/utility-tools/vanila-js-setup#readme",
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "live-server": "^1.2.1"
+  }
+}
