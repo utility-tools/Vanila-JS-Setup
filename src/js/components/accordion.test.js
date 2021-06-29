@@ -1,13 +1,11 @@
+import { expect } from '@jest/globals';
 import Accordion from './accordion.js';
 
-test('a', () => {
+test('Accordion', () => {
     const instance = new Accordion();
-    
-    console.log('instance', instance.toggleItem);
-    console.log('check', instance instanceof Accordion);
-    // expect(instance).not.toBeNull();
-});
 
-test('adds', ()=>{
-    expect(2).toBe(2);
+    //
+    expect(instance).not.toBeNull();
+    expect(typeof instance.toggleItem).toBe('function');
+    expect(typeof instance.hideSiblings).toBe('function');
 });

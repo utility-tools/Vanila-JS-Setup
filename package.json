@@ -7,15 +7,16 @@
     "build": "NODE_ENV=development webpack",
     "build-prod": "NODE_ENV=production webpack",
     "start": "live-server",
-    "test": "jest"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/utility-tools/vanila-js-setup.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Ashish Kumar <https://kumarashish.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/utility-tools/vanila-js-setup/issues"
   },
