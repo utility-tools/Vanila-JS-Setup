@@ -16,11 +16,13 @@
  */
 function mapComponent(ElRef, Component) {
     if(!ElRef || !Component) {
-        return console.error('Component mapping failed, Node or Component not found');
+        console.info('Component mapping failed, Node or Component not found');
+        return null;
     }
 
     if(typeof Component !== 'function') {
-        return console.error(`${Component} is not a class!`);
+        console.info(`${Component} is not a class!`);
+        return null;
     }
 
     // for one element
@@ -33,8 +35,8 @@ function mapComponent(ElRef, Component) {
         return ElRef.forEach(El => new initComponent(El, Component));
     }
 
-    // show error
-    console.error(`Component ${Component} can not be initiated as ${ElRef} is not a Node or NodeList`);
+    // show info
+    console.info(`Component ${Component} can not be initiated as ${ElRef} is not a Node or NodeList`);
 }
 
 export default mapComponent;

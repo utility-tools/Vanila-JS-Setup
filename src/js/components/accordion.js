@@ -52,10 +52,19 @@ export default class Accordion {
      * @param { Node } currentItem 
      */
     hideSiblings(currentItem) {
-        Array.from(currentItem.parentElement.children).filter(el => {
-            if(el.classList.contains('accordion__item') && el !== currentItem) {
-                el.classList.remove(this.activeClass);
-            }
-        });
+        const allItems = [...currentItem.parentElement.children];
+
+        allItems.forEach(el => this.isSiblingItem(el, currentItem) && el.classList.remove(this.activeClass));
+    }
+
+    /**
+     * @method
+     * @desc finds out if passedItem is sibling of current Item
+     * @param {Node} el 
+     * @param {NodeList} currentItem 
+     * @returns {boolean} isSibling
+     */
+    isSiblingItem(el, currentItem) {
+        return el.classList.contains('accordion__item') && el !== currentItem;
     }
 }
