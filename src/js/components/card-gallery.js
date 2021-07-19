@@ -12,7 +12,7 @@ export default class CardGallery {
             return;
         }
 
-        // init values
+        // set initial values
         this.compElm = El;
         this.compWidth = El.offsetWidth;
         this.nextNavEl = El.querySelector('.card-gallery__nav--next');
@@ -20,9 +20,9 @@ export default class CardGallery {
         this.slideContainerEl = El.querySelector('.card-gallery__items');
         this.slideCount = this.slideContainerEl.querySelectorAll('.card-gallery__item').length;
 
-        // event bindings
-        this.nextNavEl.addEventListener('click', this.slideNext);
-        this.prevNavEl.addEventListener('click', this.slidePrev);
+        // bind events
+        this.nextNavEl.addEventListener('click', this.slide);
+        this.prevNavEl.addEventListener('click', this.slide);
 
         // function inits
         this.disableNavigation();
@@ -30,37 +30,32 @@ export default class CardGallery {
         this.slideContainerEl.style.width = this.slideCount * this.compWidth + 'px';
     }
 
-    slideNext = () => {
-        if(this.nextNavEl.classList.contains('card-gallery__nav--disabled')) {
+    /**
+     * @method
+     * @desc changes slide when clicked on navigation items
+     * @param { EventObj } event Event object
+     * @returns null
+     */
+    slide = ({ target }) => {
+        const indexChange = target.classList.contains('card-gallery__nav--prev') ? -1 : 1;
+
+        // do nothing if button is disabled
+        if(target.classList.contains('card-gallery__nav--disabled')) {
             return;
         }
-        this.activeIndex = (this.compElm?.dataset.active * 1 || 1) + 1;
+
+        this.activeIndex = (this.compElm?.dataset.active * 1 || 1) + indexChange;
         this.compElm.dataset.active = this.activeIndex;
         this.slideContainerEl.style.left = (this.activeIndex - 1) * this.compWidth * -1 + 'px';
         this.disableNavigation();
     }
 
-    slidePrev = () => {
-        if(this.prevNavEl.classList.contains('card-gallery__nav--disabled')) {
-            return;
-        }
-        this.activeIndex = (this.compElm?.dataset.active * 1 || 1) - 1;
-        this.compElm.dataset.active = this.activeIndex;
-        this.slideContainerEl.style.left = (this.activeIndex - 1) * this.compWidth * -1 + 'px';
-        this.disableNavigation();
-    }
-
+    /**
+     * @method
+     * @desc disables navigation buttons based on current active index
+     */
     disableNavigation = () => {
-        if(this.activeIndex === 1) {
-            this.prevNavEl.classList.add('card-gallery__nav--disabled');
-        } else {
-            this.prevNavEl.classList.remove('card-gallery__nav--disabled');
-        }
-
-        if(this.activeIndex >= this.slideCount) {
-            this.nextNavEl.classList.add('card-gallery__nav--disabled');
-        } else {
-            this.nextNavEl.classList.remove('card-gallery__nav--disabled');
-        }
+        this.prevNavEl.classList.toggle('card-gallery__nav--disabled', this.activeIndex <= 1);
+        this.nextNavEl.classList.toggle('card-gallery__nav--disabled', this.activeIndex >= this.slideCount);
     }
 }
