@@ -15,15 +15,15 @@
  * @returns 
  */
 function mapComponent(ElRef, Component) {
-    if(!ElRef || !Component) {
-        console.info('Component mapping failed, Node or Component not found');
-        return null;
-    }
+    // if(!ElRef || !Component) {
+    //     console.log('Component mapping failed. Details - ElRef or Component not found');
+    //     return null;
+    // }
 
-    if(typeof Component !== 'function') {
-        console.info(`${Component} is not a class!`);
-        return null;
-    }
+    // if(typeof Component !== 'function') {
+    //     console.log('Component mapping failed. Details - Component is not a class!');
+    //     return null;
+    // }
 
     // for one element
     if(Node.prototype.isPrototypeOf(ElRef)) {
@@ -32,11 +32,13 @@ function mapComponent(ElRef, Component) {
 
     // for nodelist
     if(NodeList.prototype.isPrototypeOf(ElRef)) {
-        return ElRef.forEach(El => new initComponent(El, Component));
+        const instances = [];
+        ElRef.forEach(El => instances.push(new initComponent(El, Component)));
+        return instances;
     }
 
-    // show info
-    console.info(`Component ${Component} can not be initiated as ${ElRef} is not a Node or NodeList`);
+    // show warn
+    // console.log('Component mapping failed. Details - ElRef is not a Node or NodeList');
 }
 
 export default mapComponent;

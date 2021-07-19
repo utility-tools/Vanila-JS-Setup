@@ -1,12 +1,14 @@
 // components
 import Accordion from "./components/accordion.js";
+import CardGallery from './components/card-gallery.js';
 
 // Utils
 import mapComponent from "./utils/map-comp.js";
 
 // Component Mapping
 const compMapping = {
-    'accordion': Accordion
+    'accordion': Accordion,
+    'card-gallery': CardGallery
 };
 
 // Init Components
