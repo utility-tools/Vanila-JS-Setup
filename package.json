@@ -29,7 +29,7 @@
     "start": "webpack serve --config ./webpack.dev.config.js --hot",
     "build": "webpack --config ./webpack.prod.config.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -42,5 +42,5 @@
   "bugs": {
     "url": "https://github.com/utility-tools/vanila-js-setup/issues"
   },
-  "homepage": "https://github.com/utility-tools/vanila-js-setup#readme"
+  "homepage": "http://utility-tools.github.io/vanila-js-setup"
 }
