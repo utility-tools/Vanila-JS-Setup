@@ -36,11 +36,14 @@ export default class CardGallery {
      * @param { EventObj } event Event object
      * @returns null
      */
-    slide = ({ target }) => {
-        const indexChange = target.classList.contains('card-gallery__nav--prev') ? -1 : 1;
+    slide = (event) => {
+        const indexChange = event.target.classList.contains('card-gallery__nav--prev') ? -1 : 1;
+
+        //
+        event.stopPropagation();
 
         // do nothing if button is disabled
-        if(target.classList.contains('card-gallery__nav--disabled')) {
+        if(event.target.classList.contains('card-gallery__nav--disabled')) {
             return;
         }
 
