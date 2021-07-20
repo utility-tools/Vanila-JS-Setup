@@ -1,3 +1,5 @@
+import './card-gallery.scss';
+
 export default class CardGallery {
     compElm = null;
     activeIndex = 1;

@@ -1,6 +1,8 @@
+import './css/app.scss';
+
 // components
-import Accordion from "./components/accordion.js";
-import CardGallery from './components/card-gallery.js';
+import Accordion from "./components/accordion/accordion.js";
+import CardGallery from './components/card-gallery/card-gallery.js';
 
 // Utils
 import mapComponent from "./utils/map-comp.js";

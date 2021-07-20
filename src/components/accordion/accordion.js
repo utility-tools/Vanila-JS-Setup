@@ -1,3 +1,5 @@
+import './accordion.scss';
+
 /**
  * @class Accordion
  * @desc Accordion component class

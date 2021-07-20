@@ -1,0 +1,103 @@
+.card-gallery {
+    background: #FFF;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    max-width: 500px;
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+
+    &__items {
+        overflow: hidden;
+        display: flex;
+        flex-wrap: nowrap;
+        position: relative;
+        width: 1500px;
+        transition: all 0.3s ease-in;
+    }
+
+    &__item {
+        box-sizing: border-box;
+        flex-basis: 500px;
+
+        &--pic {
+            position: relative;
+        }
+        
+        &-image {
+            max-width: 100%;
+        }
+        
+        &-caption {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(13px);
+            box-sizing: border-box;
+            font-size: small;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 15px;
+        }
+    }
+
+    &__desc {
+        padding: 20px;
+    }
+    
+    &__nav {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        padding: 10px;
+        width: 100%;
+        top: 30%;
+
+        &--disabled {
+            opacity: 0.2;
+        }
+
+        &--prev,
+        &--next {
+            opacity: 0.5;
+            position: relative;
+            z-index: 1;
+
+            &:before {
+                content: '\27A4';
+                display: block;
+                background: #FFF;
+                height: 32px;
+                width: 32px;
+                line-height: 32px;
+                text-align: center;
+                box-sizing: border-box;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+
+            &:hover{
+                opacity: 0.9;
+            }
+        }
+
+        &--prev {
+            transform: scaleX(-1);
+        }
+    }
+
+    /* custom slide styles */
+    &__item--custom {
+        align-items: center;
+        padding: 50px;
+
+        input {
+            box-sizing: border-box;
+            display: block;
+            margin: 20px 0;
+            padding: 10px;
+            width: 100%;
+        }
+    }
+}
