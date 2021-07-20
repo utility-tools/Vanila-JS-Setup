@@ -64,7 +64,8 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: './index.hbs'
+            template: './index.hbs',
+            inject: 'body'
         })
     ]
 };
